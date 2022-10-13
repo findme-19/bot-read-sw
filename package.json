@@ -1,0 +1,27 @@
+{
+  "name": "auto-read-sw",
+  "version": "0.78.343",
+  "description": "Auto read sw adalah Read sw otomatis yang dibuat dengan baileys dan nodejs, simple dan dapat bekerja otomatis read SW setiap ada SW baru",
+  "main": "main.js",
+  "type": "module",
+  "scripts": {
+    "start": "node main.js"
+  },
+  "dependencies": {
+    "@adiwajshing/baileys": "git://github.com/what-zit-tooyaa/baileys.git",
+    "@adiwajshing/keyed-db": "^0.2.4",
+    "awesome-phonenumber": "2.70.0",
+    "axios": "^1.1.2",
+    "body-parser": "^1.20.1",
+    "cfonts": "^3.1.1",
+    "express": "^4.18.2",
+    "file-type": "^18.0.0",
+    "fs": "^0.0.1-security",
+    "is-url": "^1.2.4",
+    "node-fetch": "^3.2.10",
+    "qrcode-terminal": "^0.12.0",
+    "util": "^0.12.4",
+    "woke-dyno": "^0.0.4",
+    "yargs": "^17.6.0"
+  }
+}
