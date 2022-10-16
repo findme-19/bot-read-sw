@@ -18,8 +18,10 @@
     "file-type": "^18.0.0",
     "fs": "^0.0.1-security",
     "is-url": "^1.2.4",
+    "jimp": "^0.16.1",
     "node-fetch": "^3.2.10",
     "qrcode-terminal": "^0.12.0",
+    "syntax-error": "^1.4.0",
     "util": "^0.12.4",
     "woke-dyno": "^0.0.4",
     "yargs": "^17.6.0"
