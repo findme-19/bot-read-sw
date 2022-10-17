@@ -20,7 +20,7 @@ import {
 } from '@hapi/boom';
 import p from 'pino';
 import pretty from 'pino-pretty';
-const stream = pretty({
+var stream = pretty({
 	colorize: true
 })
 import cfonts from 'cfonts';
@@ -33,7 +33,7 @@ import util, {
 	promisify
 } from 'util';
 var lo = p({
-	level: 'silent'
+	level: 'error'
 }, stream)
 Object.assign(global, Helper);
 cfonts.say('AUTO READING STORY', { // Ubah saja cuii ;v
