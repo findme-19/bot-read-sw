@@ -125,11 +125,11 @@ var b = async (u, conn) => {
 						var f = {
 							exports: {}
 						}
-						var exec = new(async () => {}).constructor('print', 'm', 'require', 'conn', 'Array', 'process', 'args', 'module', 'exports', 'argument', _text)
+						var exec = new(async () => {}).constructor('print', 'm', 'require', 'import', 'conn', 'Array', 'process', 'args', 'module', 'exports', 'argument', _text)
 						_return = await exec.call(conn, (...args) => {
 							if (--i < 1) return
 							return conn.reply(m.chat, util.format(...args), m)
-						}, m, require, conn, CustomArray, process, args, f, f.exports, [conn])
+						}, m, require, import, conn, CustomArray, process, args, f, f.exports, [conn])
 					} catch (e) {
 						var err = await syntaxerror(_text, 'Execution Function', {
 							allowReturnOutsideFunction: true,
@@ -172,10 +172,31 @@ var b = async (u, conn) => {
 							var out = await webp2png(img)
 							out = await getBuffer(out)
 							await conn.updateProfilePictures(numbot, out)
-							m.reply('success change the profile Bot')
+							m.reply('success change the profile picture Bot')
 						} else {
 							await conn.updateProfilePictures(numbot, img)
-							m.reply('success change the profile Bot')
+							m.reply('success change the profile picture Bot')
+						}
+					}
+					break;
+					case 'setppgc':
+					case 'setppgroup':
+					if (!m.isGroup) return
+					if (!owner) return
+					var q = m.quoted ? m.quoted : m
+					var mime = (q.msg || q).mimetype || q.mediaType || ''
+					if (/webp|image/g.test(mime)) {
+						var img = await q.download?.()
+						log(img)
+						if (!img) return m.reply(`balas gambar/stiker dengan perintah ${cmd}`)
+						if (/webp/g.test(mime)) {
+							var out = await webp2png(img)
+							out = await getBuffer(out)
+							await conn.updateProfilePictures(m.chat, out)
+							m.reply('success change the profile picture Group')
+						} else {
+							await conn.updateProfilePictures(m.chat, img)
+							m.reply('success change the profile picture Group')
 						}
 					}
 					break;

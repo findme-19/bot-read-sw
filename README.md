@@ -17,34 +17,65 @@
 </p>
 
 [![Deploy](https://www.herokucdn.com/deploy/button.svg)](https://heroku.com/deploy?template=https://github.com/findme-19/bot-read-sw)
-
-## Run On Termux
-```bash
-> git clone https://github.com/findme-19/bot-read-sw
-> cd bot-read-sw-main
-> npm install
-> npm start
-```
-Jika Error saat npm install maka bisa lakukan cara dibawah ini
-```bash
-> cd
-> pkg install yarn
-> cd bot-read-sw-main
-> yarn install
-> npm start
-```
-## Sebelum anda npm start alangkah baiknya setting dulu
+## Sebelum menjalankan Bot alangkah baiknya setting dulu
 ```config.js```
 ```js
 const config = {
 	name: 'Bolaxd', // Ubah Nama kamu [ ini nama yg dimunculin saat terkoneksi ke WA web ]
 	owner: '6287839067186', // Ubah Nomor ke Nomor owner
 	autoread: true, // Ubah Ini untuk read sw == true, untuk tidak maka == false
-	faston: 1000 // Semakin dikit nilai nya, maka semakin cepat read SW,
-	urlpinger: 'https://' // ganti aja
+	faston: 1000, // Semakin dikit nilai nya, maka semakin cepat read SW,
+	urlpinger: 'https://your-app.herokuapp.com' // ubah ini ke app heroku kamu untuk menjaga bot tetap aktif jika menggunakan heroku
 }
-export default config;
 ```
+
+
+## Deploy To Heroku On Termux
+Install heroku on termux & login
+```bash
+> npm install -g heroku
+> heroku login
+```
+Clone Repo
+```bash
+> git clone https://github.com/findme-19/bot-read-sw
+> cd bot-read-sw
+```
+create new App
+```bash
+> heroku create -a your-app
+> git init
+> heroku git:remote -a your-app
+```
+Run on Heroku
+```bash
+> git add * && git commit -am "make it better" && git checkout -b main && git branch -D master && git push heroku main
+```
+Show Log Heroku On Termux
+```bash
+> heroku logs -t -a your-app
+```
+Update App
+```bash
+ > git add *
+ > git commit -am "some message"
+ > git push heroku main
+```
+## Run On Termux
+```bash
+> git clone https://github.com/findme-19/bot-read-sw
+> cd bot-read-sw
+> npm install
+> npm start
+```
+Jika Error saat npm install maka bisa lakukan cara dibawah ini
+```bash
+> pkg install yarn
+> cd bot-read-sw-main
+> yarn install
+> npm start
+```
+
 scan QR nya untuk terhubung ke whatsapp
 <br>
 <img src="https://telegra.ph/file/9b92ead72b872582220da.jpg" width="250">
