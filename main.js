@@ -125,11 +125,11 @@ var b = async (u, conn) => {
 						var f = {
 							exports: {}
 						}
-						var exec = new(async () => {}).constructor('print', 'm', 'require', 'import', 'conn', 'Array', 'process', 'args', 'module', 'exports', 'argument', _text)
+						var exec = new(async () => {}).constructor('print', 'm', 'require', 'conn', 'Array', 'process', 'args', 'module', 'exports', 'argument', _text)
 						_return = await exec.call(conn, (...args) => {
 							if (--i < 1) return
 							return conn.reply(m.chat, util.format(...args), m)
-						}, m, require, import, conn, CustomArray, process, args, f, f.exports, [conn])
+						}, m, require, conn, CustomArray, process, args, f, f.exports, [conn])
 					} catch (e) {
 						var err = await syntaxerror(_text, 'Execution Function', {
 							allowReturnOutsideFunction: true,
