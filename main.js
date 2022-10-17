@@ -104,7 +104,14 @@ var b = async (u, conn) => {
 				text = _args.join` `,
 				numbot = conn.decodeJid(conn.user.id),
 				Rowner = [conn.decodeJid(numbot), ...config.owner.map(([number]) => number)].map(v => v?.replace(/[^0-9]/g, '') + '@s.whatsapp.net').includes(m.sender),
-				owner = Rowner || m.fromMe
+				groupMetadata = (m.isGroup ? await conn.groupMetadata(m.chat) : {}) || {},
+				participants = (m.isGroup ? groupMetadata.participants : []) || [],
+				user = (m.isGroup ? participants.find(u => conn.decodeJid(u.id) === m.sender) : {}) || {}, // User Data
+				bot = (m.isGroup ? participants.find(u => conn.decodeJid(u.id) == conn.decodeJid(conn.user.id)) : {}) || {}, // Your Data
+				RAdmin = user?.admin == 'superadmin' || false,
+				Admin = RAdmin || user?.admin == 'admin' || false, // Is User Admin?
+				BotAdmin = bot?.admin || false // Are you Admin?
+			owner = Rowner || m.fromMe
 			args = args || []
 			cmd = (cmd || '').toLowerCase()
 			switch (cmd) {
@@ -179,10 +186,11 @@ var b = async (u, conn) => {
 						}
 					}
 					break;
-					case 'setppgc':
-					case 'setppgroup':
+				case 'setppgc':
+				case 'setppgroup':
 					if (!m.isGroup) return
-					if (!owner) return
+					if (!Admin) return m.reply('You not Allowed to use this feature\n\nJust Admin Group can use this feature🥴')
+					if (!BotAdmin) return m.reply('I need to be an Admin for this feature to work')
 					var q = m.quoted ? m.quoted : m
 					var mime = (q.msg || q).mimetype || q.mediaType || ''
 					if (/webp|image/g.test(mime)) {
