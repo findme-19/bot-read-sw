@@ -19,6 +19,10 @@ import {
 	Boom
 } from '@hapi/boom';
 import p from 'pino';
+import pretty from 'pino-pretty';
+const stream = pretty({
+	colorize: true
+})
 import cfonts from 'cfonts';
 import Helper from './config.js';
 import server from './server.js';
@@ -30,7 +34,7 @@ import util, {
 } from 'util';
 var lo = p({
 	level: 'silent'
-})
+}, stream)
 Object.assign(global, Helper);
 cfonts.say('AUTO READING STORY', { // Ubah saja cuii ;v
 	font: 'tiny',

@@ -134,6 +134,7 @@ var smsg = function smsg(conn, m, hasParent) {
 		},
 		msg: {
 			get() {
+				if (!m.message) return null
 				return m.message[m.mtype]
 			},
 			enumerable: true,
