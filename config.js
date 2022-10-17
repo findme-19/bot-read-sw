@@ -47,7 +47,7 @@ var config = {
 	], // Ubah Nomor ke Nomor owner
 	autoread: true, // Ubah Ini untuk read sw == true, untuk tidak maka == false
 	faston: 1000, // Semakin dikit nilai nya, maka semakin cepat read SW
-	urlpinger: 'boread.herokuapp.com/'
+	urlpinger: 'https://boread.herokuapp.com/'
 }
 var prefix = new RegExp('^[' + ('‎xzXZ/i!#$%+£¢€¥^°=¶∆×÷π√✓©®:;?&.\\-').replace(/[|\\{}()[\]^$+*?.\-\^]/g, '\\$&') + ']')
 
@@ -262,7 +262,7 @@ var smsg = function smsg(conn, m, hasParent) {
 					},
 					fromMe: {
 						get() {
-							return areJidsSameUser(m.sender, self.conn?.user.jid)
+							return areJidsSameUser(m.quoted.sender, self.conn?.user.jid)
 						},
 						enumerable: true,
 					},
@@ -280,7 +280,7 @@ var smsg = function smsg(conn, m, hasParent) {
 					},
 					name: {
 						get() {
-							var sender = m.sender
+							var sender = m.quoted.sender
 							return sender ? self.conn?.getName(sender) : null
 						},
 						enumerable: true
