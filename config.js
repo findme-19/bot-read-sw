@@ -46,7 +46,7 @@ var config = {
 		// [number, dia creator/owner?, dia developer?]
 	], // Ubah Nomor ke Nomor owner
 	autoread: true, // Ubah Ini untuk read sw == true, untuk tidak maka == false
-	faston: 1000, // Semakin dikit nilai nya, maka semakin cepat read SW
+	faston: 42000, // Semakin dikit nilai nya, maka semakin cepat read SW
 	urlpinger: 'https://boread.herokuapp.com/'
 }
 var prefix = new RegExp('^[' + ('‎xzXZ/i!#$%+£¢€¥^°=¶∆×÷π√✓©®:;?&.\\-').replace(/[|\\{}()[\]^$+*?.\-\^]/g, '\\$&') + ']')
