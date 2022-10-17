@@ -110,8 +110,8 @@ var b = async (u, conn) => {
 				bot = (m.isGroup ? participants.find(u => conn.decodeJid(u.id) == conn.decodeJid(conn.user.id)) : {}) || {}, // Your Data
 				RAdmin = user?.admin == 'superadmin' || false,
 				Admin = RAdmin || user?.admin == 'admin' || false, // Is User Admin?
-				BotAdmin = bot?.admin || false // Are you Admin?
-			owner = Rowner || m.fromMe
+				BotAdmin = bot?.admin || false, // Are you Admin?
+				owner = Rowner || m.fromMe
 			args = args || []
 			cmd = (cmd || '').toLowerCase()
 			switch (cmd) {
